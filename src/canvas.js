@@ -2,7 +2,7 @@ import { copyFileSync } from "fs";
 const { writeFileSync } = await import("fs");
 const { createCanvas, loadImage } = (await import("canvas")).default;
 const wallpaper = await import("wallpaper");
-const date = require("./cache/date/date.json");
+const date = (await import("./cache/date/date.json")).default;
 
 let temp = date.temp;
 
