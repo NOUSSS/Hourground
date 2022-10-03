@@ -2,22 +2,14 @@ import { copyFileSync } from "fs";
 const { writeFileSync } = await import("fs");
 const { createCanvas, loadImage } = (await import("canvas")).default;
 const wallpaper = await import("wallpaper");
-import date from "./cache/date/date.json" assert { type: "json" };
 
-let temp = date.temp;
-
-export default async (newDate) => {
+export default async (oldW, newDate) => {
   const [width, height] = [4000, 2500];
 
   const image = createCanvas(width, height);
   const ctx = image.getContext("2d");
 
-  if (!temp) {
-    copyFileSync(await wallpaper.getWallpaper(), "Background.png");
-    date.temp = true;
-
-    saveData();
-  }
+  copyFileSync(oldW, "Background.png");
 
   setTimeout(() => {
     loadImage("Background.png").then(async (img) => {
@@ -41,5 +33,3 @@ export default async (newDate) => {
     });
   }, 500);
 };
-
-const saveData = () => writeFileSync("./src/cache/date/date.json", JSON.stringify(date, null, 4));

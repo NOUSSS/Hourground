@@ -1,15 +1,18 @@
+import { getWallpaper } from "wallpaper";
 import canvas from "./canvas.js";
 
 const events = (await import("./events/newHours.js")).default;
 const client = new events().getNow();
 const wait = () => new Promise((res) => setTimeout(res, 500));
 
-wait().then(() => {
+wait().then(async () => {
   console.clear();
 
   const now = client.getString();
 
-  canvas(now);
+  canvas("Background.png", now);
 
-  client.on("newHours", async (newDate) => (newDate !== now ? canvas(newDate) : null));
+  client.on("newHours", async (newDate) =>
+    newDate !== now ? canvas("Background.png", newDate) : null
+  );
 });
