@@ -1,0 +1,17 @@
+{
+  "name": "hourground",
+  "version": "1.0.0",
+  "description": "Change le fond d'écran de votre ordinateur toute les minutes",
+  "main": "src/index.js",
+  "type": "module",
+  "author": "NouSs",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.10.1",
+    "wallpaper": "^6.1.1"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node src/test/test.js"
+  }
+}
