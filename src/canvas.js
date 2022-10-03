@@ -13,14 +13,14 @@ export default async (newDate) => {
   const ctx = image.getContext("2d");
 
   if (!temp) {
-    copyFileSync(await wallpaper.getWallpaper(), "Wallpaper.png");
+    copyFileSync(await wallpaper.getWallpaper(), "Background.png");
     date.temp = true;
 
     saveData();
   }
 
   setTimeout(() => {
-    loadImage("Wallpaper.png").then(async (img) => {
+    loadImage("Background.png").then(async (img) => {
       ctx.drawImage(img, 0, 0, 4000, 2500);
 
       ctx.shadowOffsetX = 5;
