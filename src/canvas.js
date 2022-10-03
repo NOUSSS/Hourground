@@ -3,13 +3,18 @@ const { writeFileSync } = await import("fs");
 const { createCanvas, loadImage } = (await import("canvas")).default;
 const wallpaper = await import("wallpaper");
 
+let temp = false;
+
 export default async (newDate) => {
   const [width, height] = [4000, 2500];
 
   const image = createCanvas(width, height);
   const ctx = image.getContext("2d");
 
-  copyFileSync(await wallpaper.getWallpaper(), "Wallpaper.png");
+  if (!temp) {
+    copyFileSync(await wallpaper.getWallpaper(), "Wallpaper.png");
+    temp = true;
+  }
 
   setTimeout(() => {
     loadImage("Wallpaper.png").then(async (img) => {

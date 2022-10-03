@@ -7,7 +7,9 @@ const wait = () => new Promise((res) => setTimeout(res, 500));
 wait().then(() => {
   console.clear();
 
-  canvas(client.getString());
+  const now = client.getString();
 
-  client.on("newHours", async (newDate) => canvas(newDate));
+  canvas(now);
+
+  client.on("newHours", async (newDate) => (newDate !== now ? canvas(newDate) : null));
 });
